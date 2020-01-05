@@ -4,14 +4,19 @@
 '''
 import logging
 
-class Logger(object):
+class MyLogger:
 
-    def __init__(self, log_file_name, log_level, logger_name=None):
+    @staticmethod
+    def get_log(log_file_name: str, log_level: str, logger_name: str = None):
+        '''
+        log_file_name: 日志文件的路径，例: ../code/mylog.txt
+        log_level: 日志记录的等级，['CRITICAL', 'ERROR', 'WARNING', 'INFO', 'DEBUG', 'NOTSET']
+        '''
         # 创建一个logger
-        self.__logger = logging.getLogger(logger_name)
+        logger = logging.getLogger(logger_name)
 
         # 指定日志的最低输出级别，默认为WARN级别
-        self.__logger.setLevel(log_level)
+        logger.setLevel(log_level)
 
         # 创建一个handler用于写入日志文件
         file_handler = logging.FileHandler(log_file_name)
@@ -26,14 +31,12 @@ class Logger(object):
         # console_handler.setFormatter(formatter)
 
         # 给logger添加handler
-        self.__logger.addHandler(file_handler)
+        logger.addHandler(file_handler)
         # self.__logger.addHandler(console_handler)
 
-    def get_log(self):
-        return self.__logger
+        return logger
 
-
-if __name__ == '__main__':
-    logger = Logger(log_file_name='./code/log.txt', log_level=logging.DEBUG, logger_name="test").get_log()
-    logger.debug('hhhhh ... ')
-    logger.info('hello ... ')
+# if __name__ == '__main__':
+#     log = MyLogger.get_log(log_file_name='log.txt', log_level="INFO", logger_name="test")
+#     log.debug('hhhhh ... ')
+#     log.info('hello ... ')

@@ -1,11 +1,10 @@
 import zmail
 from typing import List
-import logging
-from MyLogger import Logger
+from my_logger import MyLogger
 
-logger = Logger(log_file_name='log.txt', log_level=logging.DEBUG).get_log()
+log = MyLogger.get_log(log_file_name='log.txt', log_level="INFO")
 
-class MyEmailServer:
+class MyEmail:
 
     @staticmethod
     def send_mail(subject: str, content_text: str, to_addr: List[str] or str) -> bool:
@@ -17,13 +16,14 @@ class MyEmailServer:
 
             return server.send_mail(to_addr, mail_content)
         except:
-            logger.info('email or password is error ... ')
-            logger.debug("hello")
+            log.info('email or password is error ... ')
             return False
 
 if __name__ == '__main__':
-    result = MyEmailServer.send_mail("般若波罗蜜多心经",
+    is_success = MyEmail.send_mail("般若波罗蜜多心经",
                             "观自在菩萨，行深般若波罗蜜多时，照见......",
                             'buddaa@foxmail.com')
-
-    print(result)
+    if is_success:
+        print("send email success")
+    else:
+        print("send email failed")
