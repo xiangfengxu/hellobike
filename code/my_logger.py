@@ -4,6 +4,7 @@
 '''
 import logging
 
+
 class MyLogger:
 
     @staticmethod
@@ -36,7 +37,7 @@ class MyLogger:
 
         return logger
 
-# if __name__ == '__main__':
-#     log = MyLogger.get_log(log_file_name='log.txt', log_level="INFO", logger_name="test")
-#     log.debug('hhhhh ... ')
-#     log.info('hello ... ')
+if __name__ == '__main__':
+    log = MyLogger.get_log(log_file_name='log.txt', log_level="INFO")
+    log.debug('hhhhh ... ')
+    log.info('hello ... ')

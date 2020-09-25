@@ -6,7 +6,16 @@ from sklearn import metrics
 
 data = pd.read_csv('data.csv')
 
-data.drop(['user_guid', 'start_period', 'new_weather', 'new_high_temperature', 'new_low_temperature', 'out_in_counts'], axis=1, inplace=True)
+data.drop(
+    ['user_guid',
+     'start_period',
+     'new_weather',
+     'new_high_temperature',
+     'new_low_temperature',
+     'out_in_counts'],
+    axis=1,
+    inplace=True
+)
 
 y = data.pop("fantai_time")
 X = data.as_matrix()

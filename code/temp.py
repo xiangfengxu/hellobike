@@ -145,14 +145,12 @@ def primes():
         yield n
         it = filter(fun(n), it) # 构造新序列
 
-for i in primes():
-    if i < 100:
-        print(i)
-    else:
-        break
+# for i in primes():
+#     if i < 100:
+#         print(i)
+#     else:
+#         break
 #---------------------------------------------------------
-
-
 
 
 
